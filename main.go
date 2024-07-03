@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	basePath string = "."
+	basePath string = "C://"
 	errLog   *log.Logger
 	infoLog  *log.Logger
 )
@@ -44,8 +44,8 @@ func cmd(args string) {
 
 	/*Если команда cd*/
 	if newArgs[0] == "cd" {
-		infoLog.Printf("CD basePath from %v to %v", basePath, basePath+"/"+newArgs[1])
-		basePath = basePath + "/" + newArgs[1]
+		infoLog.Printf("CD basePath from %v to %v", basePath, newArgs[1])
+		basePath = newArgs[1]
 		return
 	}
 
