@@ -15,19 +15,15 @@ var (
 	infoLog  *log.Logger
 )
 
-/*Инициальзация логгеров*/
+/*Инициализация логгеров*/
 func initLoggers() {
-	logFileInfo, err := os.OpenFile("INFO.log", os.O_CREATE|os.O_APPEND, 0666)
-	if err != nil {
-		panic(err)
-	}
-	logFileError, err := os.OpenFile("ERROR.log", os.O_CREATE|os.O_APPEND, 0666)
+	logFile, err := os.OpenFile("MYTERMINALLOG.log", os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		panic(err)
 	}
 
-	errLog = log.New(logFileError, "ERROR ", log.Ldate|log.Ltime|log.Llongfile)
-	infoLog = log.New(logFileInfo, "INFO ", log.Ldate|log.Ltime)
+	errLog = log.New(logFile, "ERROR ", log.Ldate|log.Ltime|log.Llongfile)
+	infoLog = log.New(logFile, "INFO ", log.Ldate|log.Ltime)
 }
 
 /*Функция для запуска команды*/
