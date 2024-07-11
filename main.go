@@ -36,7 +36,7 @@ func cmd(args string) {
 
 	/*команда help - помощь*/
 	if args == "help" {
-		fmt.Println("Самодельный терминал\nПеред путём к файлу необходимо ставить знак ':'")
+		fmt.Println("Самодельный терминал))")
 		return
 	}
 
@@ -46,17 +46,8 @@ func cmd(args string) {
 	if newArgs[0] == "cd" {
 		infoLog.Printf("CD basePath from %v to %v", basePath, newArgs[1])
 		basePath = newArgs[1]
+		os.Chdir(basePath)
 		return
-	}
-
-	/*Замена всех путей на полный путь от программы*/
-	for i, v := range newArgs {
-		if []rune(v)[0] == ':' {
-			newV := []rune(v)[1:]
-			newVstr := basePath + "/" + string(newV)
-			infoLog.Printf("Command path from %v to %v", newV, newVstr)
-			newArgs[i] = newVstr
-		}
 	}
 
 	infoLog.Printf("Full command: %v", newArgs)
